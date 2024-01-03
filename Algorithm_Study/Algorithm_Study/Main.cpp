@@ -1,54 +1,73 @@
 #include "Hash.h"
+#include "Timer.h"
 
 #include <fstream>
+#include <functional>
+#include <unordered_map>
 
 int main()
 {
-    std::cout << "english3.txt" << std::endl;
+    std::cout << "<My Hash>" << std::endl;
+    Hash<std::string> myHash1;
 
-    Hash<std::string> stringHash;
-    std::fstream file;
     std::string word;
-    std::string filePath = "../Resource/english3.txt";
-    file.open(filePath.c_str());
+    std::string wordPath = "../Resource/english3.txt";
+    std::fstream file;
+    file.open(wordPath.c_str());
+
+    Timer timer;
+    timer.Start();
+
     while(file >> word)
     {
-        stringHash.Insert(word);
+        myHash1.Insert(word);
     }
 
-    stringHash.ShowStringData();
+    timer.End();
+    file.clear();
+    file.seekg(0, std::ios::beg);
+    timer.GetElapsedTime();
+    myHash1.ShowInfo();
 
-    /*std::cout << "int" << std::endl;
-    Hash<int> hash1;
-    hash1.Insert(1);
-    hash1.Insert(2);
-    hash1.Insert(3);
-    hash1.Insert(4);
-    hash1.Insert(5);
-    hash1.Insert(6);
-    hash1.ShowTypeData();
+    std::cout << "--------------------------------" << std::endl;
 
-    std::cout << std::endl;
+    std::cout << "<std::hash>" << std::endl;
+    std::hash<std::string> stdHash;
+    std::unordered_map<int, std::string> stdHashMap;
 
-    std::cout << "char" << std::endl;
-    Hash<char> hash2;
-    hash2.Insert('a');
-    hash2.Insert('b');
-    hash2.Insert('c');
-    hash2.Insert('d');
-    hash2.Insert('e');
-    hash2.Insert('f');
-    hash2.ShowTypeData();
+    timer.Start();
 
-    std::cout << std::endl;
+    while (file >> word)
+    {
+        int key = stdHash(word);
+        stdHashMap.insert(make_pair(key, word));
+    }
 
-    std::cout << "float" << std::endl;
-    Hash<float> hash3;
-    hash3.Insert(1.1f);
-    hash3.Insert(2.1f);
-    hash3.Insert(3.1f);
-    hash3.Insert(4.1f);
-    hash3.Insert(5.1f);
-    hash3.Insert(6.1f);
-    hash3.ShowTypeData();*/
+    timer.End();
+    file.clear();
+    file.seekg(0, std::ios::beg);
+    timer.GetElapsedTime();
+
+    std::cout << "--------------------------------" << std::endl;
+
+    std::cout << "<My Hash2>" << std::endl;
+    Hash<double> myHash2;
+
+    double doubleDummy;
+    std::string doublePath = "../Resource/doubleTest.txt";
+    file.open(wordPath.c_str());
+
+    timer.Start();
+    while (file >> doubleDummy)
+    {
+        myHash2.Insert(doubleDummy);
+    }
+
+    timer.End();
+    file.clear();
+    file.seekg(0, std::ios::beg);
+    timer.GetElapsedTime();
+    myHash2.ShowInfo();
+
+    return 0;
 }

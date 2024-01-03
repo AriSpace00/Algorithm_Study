@@ -12,15 +12,24 @@
     <Filter Include="소스 파일\Hash">
       <UniqueIdentifier>{4dae0716-61fd-4a34-ac01-e451bd4e562d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Timer">
+      <UniqueIdentifier>{319f56ef-0e1d-4c66-ab0e-85eebc90749c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>소스 파일\Timer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hash.h">
       <Filter>소스 파일\Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>소스 파일\Timer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
