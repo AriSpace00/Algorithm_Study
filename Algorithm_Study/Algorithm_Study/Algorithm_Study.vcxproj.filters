@@ -15,6 +15,15 @@
     <Filter Include="소스 파일\Timer">
       <UniqueIdentifier>{319f56ef-0e1d-4c66-ab0e-85eebc90749c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Vector">
+      <UniqueIdentifier>{301874f0-e3c6-4b2b-b6fe-0d1a2dc6592b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Vector\Example">
+      <UniqueIdentifier>{f5f1d9a1-0714-4c22-a0eb-d7e240dae19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Vector\Allocater">
+      <UniqueIdentifier>{6a7b2b6a-cde1-4b6a-9e9e-779e6a164010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -22,6 +31,12 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>소스 파일\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorExample.cpp">
+      <Filter>소스 파일\Vector\Example</Filter>
+    </ClCompile>
+    <ClCompile Include="AllocaterExample.cpp">
+      <Filter>소스 파일\Vector\Allocater</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

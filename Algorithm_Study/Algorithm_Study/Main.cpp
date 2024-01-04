@@ -28,6 +28,7 @@ int main()
     file.seekg(0, std::ios::beg);
     timer.GetElapsedTime();
     myHash1.ShowInfo();
+    myHash1.ShowData();
 
     std::cout << "--------------------------------" << std::endl;
 
