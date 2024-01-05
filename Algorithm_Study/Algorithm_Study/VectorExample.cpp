@@ -18,7 +18,7 @@ public:
         std::cout << m_id << " Cat created by copying\n";
     }
 
-
+    // noexcept : 예외를 발생시키지 않는다는 것을 보장한다.
     Cat(Cat&& rhs) noexcept {
 
         m_id = rhs.m_id;

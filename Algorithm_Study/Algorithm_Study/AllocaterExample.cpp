@@ -1,40 +1,57 @@
+#include <cstdlib>
 #include <iostream>
-#include <memory>
-#include <string>
+#include <limits>
+#include <new>
+#include <vector>
 
-int main()
+#include "CutomAllocater.h"
+
+template <class T>
+struct Mallocator
 {
-    // default allocator for ints
-    std::allocator<int> alloc1;
+    typedef T value_type;
 
-    // demonstrating the few directly usable members
-    static_assert(std::is_same_v<int, decltype(alloc1)::value_type>);
-    int* p1 = alloc1.allocate(1); // space for one int
-    alloc1.deallocate(p1, 1);     // and it is gone
+    Mallocator() = default;
 
-    // Even those can be used through traits though, so no need
-    using traits_t1 = std::allocator_traits<decltype(alloc1)>; // The matching trait
-    p1 = traits_t1::allocate(alloc1, 1);
-    traits_t1::construct(alloc1, p1, 7);  // construct the int
-    std::cout << *p1 << '\n';
-    traits_t1::deallocate(alloc1, p1, 1); // deallocate space for one int
+    template <class U>
+    constexpr Mallocator(const Mallocator<U>&) noexcept {}
 
-    // default allocator for strings
-    std::allocator<std::string> alloc2;
-    // matching traits
-    using traits_t2 = std::allocator_traits<decltype(alloc2)>;
+    // [[nodiscard]] : 해당 함수의 반환값이 버려지면 경고가 나타남
+    [[nodiscard]] T* allocate(std::size_t n) {
+        if (n > std::numeric_limits<std::size_t>::max() / sizeof(T))
+            throw std::bad_array_new_length();
 
-    // Rebinding the allocator using the trait for strings gets the same type
-    traits_t2::rebind_alloc<std::string> alloc_ = alloc2;
+        if (auto p = static_cast<T*>(std::malloc(n * sizeof(T)))) {
+            report(p, n);
+            return p;
+        }
 
-    std::string* p2 = traits_t2::allocate(alloc2, 2); // space for 2 strings
+        throw std::bad_alloc();
+    }
 
-    traits_t2::construct(alloc2, p2, "foo");
-    traits_t2::construct(alloc2, p2 + 1, "bar");
+    void deallocate(T* p, std::size_t n) noexcept {
+        report(p, n, 0);
+        std::free(p);
+    }
 
-    std::cout << p2[0] << ' ' << p2[1] << '\n';
+private:
+    void report(T* p, std::size_t n, bool alloc = true) const {
+        std::cout << (alloc ? "Alloc: " : "Dealloc: ") << sizeof(T) * n
+            << " bytes at " << std::hex << std::showbase
+            << reinterpret_cast<void*>(p) << std::dec << '\n';
+    }
+};
 
-    traits_t2::destroy(alloc2, p2 + 1);
-    traits_t2::destroy(alloc2, p2);
-    traits_t2::deallocate(alloc2, p2, 2);
+int main() {
+    auto report = [](std::vector<int, Mallocator<int>>& vec) {
+        std::cout << "vector has size=" << vec.size()
+            << " and capacity=" << vec.capacity() << "\n\n";
+        };
+    std::cout << "create vector of 8 ints:\n";
+    std::vector<int, Mallocator<int>> v(8);
+    report(v);
+
+    std::cout << "Add 1 element:\n";
+    v.push_back(42);
+    report(v);
 }

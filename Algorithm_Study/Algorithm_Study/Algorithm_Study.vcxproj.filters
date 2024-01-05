@@ -38,6 +38,9 @@
     <ClCompile Include="AllocaterExample.cpp">
       <Filter>소스 파일\Vector\Allocater</Filter>
     </ClCompile>
+    <ClCompile Include="CutomAllocater.h">
+      <Filter>소스 파일\Vector\Allocater</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hash.h">
