@@ -24,9 +24,15 @@
     <Filter Include="소스 파일\Vector\Allocater">
       <UniqueIdentifier>{6a7b2b6a-cde1-4b6a-9e9e-779e6a164010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\DFS">
+      <UniqueIdentifier>{b4320b18-8cda-4923-9513-6ba2dacfc37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\DynamicProgramming">
+      <UniqueIdentifier>{1a85d0bc-99ae-4f50-a4a2-8e7c46cd2bb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="HashMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
@@ -40,6 +46,12 @@
     </ClCompile>
     <ClCompile Include="CutomAllocater.h">
       <Filter>소스 파일\Vector\Allocater</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS.cpp">
+      <Filter>소스 파일\DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicProgramming.cpp">
+      <Filter>소스 파일\DynamicProgramming</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
