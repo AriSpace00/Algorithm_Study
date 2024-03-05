@@ -30,6 +30,9 @@
     <Filter Include="소스 파일\DynamicProgramming">
       <UniqueIdentifier>{1a85d0bc-99ae-4f50-a4a2-8e7c46cd2bb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MemoryInDepth">
+      <UniqueIdentifier>{b416ef0d-7c8b-4a0d-879a-871218c19cdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HashMain.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="DynamicProgramming.cpp">
       <Filter>소스 파일\DynamicProgramming</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryInDepth.cpp">
+      <Filter>소스 파일\MemoryInDepth</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
