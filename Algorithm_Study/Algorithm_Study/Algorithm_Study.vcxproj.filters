@@ -36,6 +36,9 @@
     <Filter Include="소스 파일\Single_Linked_List">
       <UniqueIdentifier>{d79ce89e-6b23-474e-a578-490b339c41bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Double_Linked_List">
+      <UniqueIdentifier>{6174c079-69b9-4c95-ae67-2b0fdd4aa059}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Timer.cpp">
@@ -65,6 +68,9 @@
     <ClCompile Include="single_linked_list.cpp">
       <Filter>소스 파일\Single_Linked_List</Filter>
     </ClCompile>
+    <ClCompile Include="double_linked_list.cpp">
+      <Filter>소스 파일\Double_Linked_List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hash.h">
@@ -75,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="single_linked_list.h">
       <Filter>소스 파일\Single_Linked_List</Filter>
+    </ClInclude>
+    <ClInclude Include="double_linked_list.h">
+      <Filter>소스 파일\Double_Linked_List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
